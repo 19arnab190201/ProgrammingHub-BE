@@ -1,15 +1,18 @@
 const mongoose = require("mongoose");
 
-const questionSchema = new mongoose.Schema({
-  question: String,
-  options: [String],
-  answer: Number,
-  quizId: mongoose.Schema.Types.ObjectId,
-});
-
 const quizSchema = new mongoose.Schema({
   name: String,
-  questions: [questionSchema],
+  questions: [
+    {
+      question: String,
+      options: [
+        {
+          option: String,
+          isCorrect: Boolean,
+        },
+      ],
+    },
+  ],
   chapterId: mongoose.Schema.Types.ObjectId,
 });
 
@@ -22,13 +25,15 @@ const subTopicSchema = new mongoose.Schema({
 const chapterSchema = new mongoose.Schema({
   name: String,
   subTopics: [subTopicSchema],
-  quiz: quizSchema,
+  // quiz: quizSchema,
   courseId: mongoose.Schema.Types.ObjectId,
 });
 
 const courseSchema = new mongoose.Schema({
   courseTitle: String,
   courseImage: String,
+  courseDescription: String,
+  courseSubtitle: String,
   courseDuration: String,
   courseOutcome: [
     {

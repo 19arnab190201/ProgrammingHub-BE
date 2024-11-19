@@ -8,6 +8,8 @@ exports.createCourse = BigPromise(async (req, res, next) => {
       courseTitle: req.body.courseTitle,
       courseImage: req.body.courseImage,
       courseDuration: req.body.courseDuration,
+      courseDescription: req.body.courseDescription,
+      courseSubtitle: req.body.courseSubtitle,
       courseOutcome: req.body.courseOutcome,
       courseBenefits: req.body.courseBenefits,
       courseRequirements: req.body.courseRequirements,
